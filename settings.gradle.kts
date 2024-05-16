@@ -1,4 +1,4 @@
-rootProject.name = "boilerplate"
+rootProject.name = "system-design-interview2-practice"
 
 pluginManagement {
     val kotlinVersion = "1.8.22"
@@ -23,7 +23,16 @@ pluginManagement {
     }
 }
 
-// modules
+fun File.registerSubDirectoriesAsModule() {
+    this.listFiles()?.forEach { file ->
+        if (file.isDirectory) {
+            include("${this.name}:${file.name}")
+        }
+    }
+}
+
 include("common")
-include("core", "core:domain", "core:external")
-include("application", "application:admin-api", "application:api", "application:batch")
+
+listOf("application", "core")
+    .map { File(it) }
+    .map { it.registerSubDirectoriesAsModule() }

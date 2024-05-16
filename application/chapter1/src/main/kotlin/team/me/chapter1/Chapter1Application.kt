@@ -1,11 +1,11 @@
-package team.me.batch
+package team.me.chapter1
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
 @SpringBootApplication
-class BatchApplication
+class Chapter1Application
 
 fun main(args: Array<String>) {
-    runApplication<BatchApplication>(*args)
+    runApplication<Chapter1Application>(*args)
 }

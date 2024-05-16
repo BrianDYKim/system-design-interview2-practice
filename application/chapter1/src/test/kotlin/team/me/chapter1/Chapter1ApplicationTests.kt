@@ -1,10 +1,10 @@
-package team.me.batch
+package team.me.chapter1
 
 import org.junit.jupiter.api.Test
 import org.springframework.boot.test.context.SpringBootTest
 
 @SpringBootTest
-class BatchApplicationTests {
+class Chapter1ApplicationTests {
     @Test
     fun contextLoads() {
     }
