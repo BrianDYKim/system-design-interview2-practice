@@ -5,7 +5,7 @@ package team.me.chapter1.business.domain.entity
  * @since 2024. 5. 16.
  */
 class IBusiness private constructor(
-    val businessId: Long,
+    val businessId: Long?,
     val address: IBusinessAddress,
     val location: IBusinessGeoLocation,
 ) {
@@ -40,7 +40,7 @@ class IBusiness private constructor(
             )
         }
 
-        data class BusinessId(val value: Long)
+        data class BusinessId(val value: Long?)
 
         data class BusinessAddress(val value: String)
 

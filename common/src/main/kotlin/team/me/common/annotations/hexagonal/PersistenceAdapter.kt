@@ -1,13 +1,13 @@
 package team.me.common.annotations.hexagonal
 
 import org.springframework.core.annotation.AliasFor
-import org.springframework.stereotype.Component
+import org.springframework.stereotype.Repository
 
 @Target(AnnotationTarget.CLASS, AnnotationTarget.TYPE)
 @Retention(AnnotationRetention.RUNTIME)
 @MustBeDocumented
-@Component
+@Repository
 annotation class PersistenceAdapter(
-    @get:AliasFor(annotation = Component::class)
+    @get:AliasFor(annotation = Repository::class)
     val value: String = "",
 )

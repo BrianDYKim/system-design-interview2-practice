@@ -1,13 +1,13 @@
 package team.me.common.annotations.hexagonal
 
 import org.springframework.core.annotation.AliasFor
-import org.springframework.stereotype.Component
+import org.springframework.web.bind.annotation.RestController
 
-@Target(AnnotationTarget.CLASS, AnnotationTarget.TYPE)
+@Target(AnnotationTarget.TYPE, AnnotationTarget.CLASS)
 @Retention(AnnotationRetention.RUNTIME)
 @MustBeDocumented
-@Component
+@RestController
 annotation class WebAdapter(
-    @get:AliasFor(annotation = Component::class)
+    @get:AliasFor(annotation = RestController::class)
     val value: String = "",
 )

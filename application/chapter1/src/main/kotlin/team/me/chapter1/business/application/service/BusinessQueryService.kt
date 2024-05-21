@@ -1,4 +1,4 @@
-package team.me.chapter1.business.application
+package team.me.chapter1.business.application.service
 
 /**
  * @author Doyeop Kim
