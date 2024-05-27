@@ -24,5 +24,6 @@ interface IBusinessRepository {
         country: IBusiness.Companion.BusinessCountry,
         latitude: IBusiness.Companion.BusinessLatitude,
         longitude: IBusiness.Companion.BusinessLongitude,
+        geoHashPrecision: Int,
     ): IBusiness
 }

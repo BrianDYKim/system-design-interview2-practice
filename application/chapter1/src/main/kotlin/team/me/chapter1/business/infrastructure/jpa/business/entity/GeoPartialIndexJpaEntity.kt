@@ -26,6 +26,18 @@ open class GeoPartialIndexJpaEntity protected constructor() : NonTimeStampBaseJp
     @get:Column(name = "business_id", nullable = false)
     open var businessId: Long = 0L
 
+    companion object {
+        fun generate(
+            geoHash: String,
+            businessId: Long,
+        ): GeoPartialIndexJpaEntity {
+            return GeoPartialIndexJpaEntity().apply {
+                this.geoHash = geoHash
+                this.businessId = businessId
+            }
+        }
+    }
+
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (javaClass != other?.javaClass) return false

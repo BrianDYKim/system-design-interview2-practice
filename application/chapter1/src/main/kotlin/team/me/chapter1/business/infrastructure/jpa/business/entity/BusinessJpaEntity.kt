@@ -38,6 +38,26 @@ open class BusinessJpaEntity protected constructor() : TimeStampBaseJpaEntity() 
     @get:Column(name = "longitude", nullable = false)
     open var longitude: Double = 0.0
 
+    companion object {
+        fun generate(
+            address: String,
+            city: String,
+            state: String,
+            country: String,
+            latitude: Double,
+            longitude: Double,
+        ): BusinessJpaEntity {
+            return BusinessJpaEntity().apply {
+                this.address = address
+                this.city = city
+                this.state = state
+                this.country = country
+                this.latitude = latitude
+                this.longitude = longitude
+            }
+        }
+    }
+
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (javaClass != other?.javaClass) return false
