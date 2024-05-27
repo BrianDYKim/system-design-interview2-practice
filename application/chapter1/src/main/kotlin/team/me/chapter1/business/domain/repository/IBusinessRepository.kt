@@ -26,4 +26,6 @@ interface IBusinessRepository {
         longitude: IBusiness.Companion.BusinessLongitude,
         geoHashPrecision: Int,
     ): IBusiness
+
+    fun findBusinessesByGeoHash(geoHash: String): List<IBusiness>
 }
