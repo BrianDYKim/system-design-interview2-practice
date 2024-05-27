@@ -17,13 +17,13 @@ import team.me.chapter1.business.infrastructure.jpa.common.entity.NonTimeStampBa
 open class GeoPartialIndexJpaEntity protected constructor() : NonTimeStampBaseJpaEntity() {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @get:Column(name = "id", nullable = false)
+    @Column(name = "id", nullable = false)
     open var id: Long? = 0L
 
-    @get:Column(name = "geohash", nullable = false)
+    @Column(name = "geohash", nullable = false)
     open var geoHash: String = ""
 
-    @get:Column(name = "business_id", nullable = false)
+    @Column(name = "business_id", nullable = false)
     open var businessId: Long = 0L
 
     companion object {

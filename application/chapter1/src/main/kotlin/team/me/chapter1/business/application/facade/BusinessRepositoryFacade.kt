@@ -1,5 +1,6 @@
 package team.me.chapter1.business.application.facade
 
+import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Component
 import team.me.chapter1.business.domain.entity.IBusiness
 import team.me.chapter1.business.domain.repository.IBusinessRepository
@@ -20,6 +21,8 @@ class BusinessRepositoryFacade(
     private val geoPartialIndexJpaRepository: GeoPartialIndexJpaRepository,
     private val jpaEntityToDomainMapper: BusinessJpaEntityToDomainMapper,
 ) : IBusinessRepository {
+    private val logger = LoggerFactory.getLogger(this::class.java)
+
     override fun store(
         address: IBusiness.Companion.BusinessAddress,
         city: IBusiness.Companion.BusinessCity,
@@ -42,6 +45,8 @@ class BusinessRepositoryFacade(
         val storedBusinessJpaEntity = businessJpaRepository.save(businessJpaEntity)
 
         val geoHash = GeoHashTool.fromLatitudeAndLongitude(latitude.value, longitude.value, geoHashPrecision)
+
+        logger.info(geoHash)
 
         val geoPartialIndexJpaEntity =
             GeoPartialIndexJpaEntity.generate(

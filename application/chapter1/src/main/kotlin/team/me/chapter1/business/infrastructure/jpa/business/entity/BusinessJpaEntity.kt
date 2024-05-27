@@ -17,25 +17,25 @@ import team.me.chapter1.business.infrastructure.jpa.common.entity.TimeStampBaseJ
 open class BusinessJpaEntity protected constructor() : TimeStampBaseJpaEntity() {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @get:Column(name = "id", nullable = false)
+    @Column(name = "id", nullable = false)
     open var id: Long? = 0L
 
-    @get:Column(name = "address", nullable = false)
+    @Column(name = "address", nullable = false)
     open var address: String = ""
 
-    @get:Column(name = "city", nullable = false)
+    @Column(name = "city", nullable = false)
     open var city: String = ""
 
-    @get:Column(name = "state", nullable = false)
+    @Column(name = "state", nullable = false)
     open var state: String = ""
 
-    @get:Column(name = "country", nullable = false)
+    @Column(name = "country", nullable = false)
     open var country: String = ""
 
-    @get:Column(name = "latitude", nullable = false)
+    @Column(name = "latitude", nullable = false)
     open var latitude: Double = 0.0
 
-    @get:Column(name = "longitude", nullable = false)
+    @Column(name = "longitude", nullable = false)
     open var longitude: Double = 0.0
 
     companion object {

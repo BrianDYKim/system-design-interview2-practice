@@ -14,6 +14,6 @@ object GeoHashTool {
     ): String {
         val geoHash = GeoHash.withCharacterPrecision(latitude, longitude, precision)
 
-        return geoHash.toBinaryString()
+        return geoHash.toBase32()
     }
 }

@@ -15,13 +15,13 @@ import java.time.LocalDateTime
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener::class)
 abstract class TimeStampBaseJpaEntity(
-    @get:CreatedDate
-    @get:Column(name = "created_at", nullable = false)
+    @CreatedDate
+    @Column(name = "created_at", nullable = false)
     open var createdAt: LocalDateTime = LocalDateTime.now(),
-    @get:LastModifiedDate
-    @get:Column(name = "updated_at", nullable = true)
+    @LastModifiedDate
+    @Column(name = "updated_at", nullable = true)
     open var updatedAt: LocalDateTime? = null,
-    @get:Column(name = "deleted_at", nullable = true)
+    @Column(name = "deleted_at", nullable = true)
     open var deletedAt: LocalDateTime? = null,
 ) : BaseJpaEntity() {
     constructor() : this(LocalDateTime.now(), null, null)
