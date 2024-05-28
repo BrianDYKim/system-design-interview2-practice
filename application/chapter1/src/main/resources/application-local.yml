@@ -2,6 +2,7 @@ spring:
     jackson:
         time-zone: UTC
 
+    # JPA
     datasource:
         url: jdbc:mysql://localhost:3306/spring_security?useSSL=false&useUnicode=true&serverTimezone=UTC
         username: spring
@@ -22,3 +23,7 @@ spring:
     logging:
         level:
             org.hibernate.SQL: debug
+
+    redis:
+        host: localhost
+        port: 6379

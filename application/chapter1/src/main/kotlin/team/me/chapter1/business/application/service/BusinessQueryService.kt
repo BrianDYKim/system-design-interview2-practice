@@ -12,6 +12,7 @@ import team.me.chapter1.business.application.useCase.BusinessSearchUseCase
  * @since 2024. 5. 16.
  */
 @Service
+@Transactional
 class BusinessQueryService(
     private val businessSearchUseCase: BusinessSearchUseCase,
     private val domainToResponseMapper: BusinessDomainToResponseMapper,
@@ -21,7 +22,6 @@ class BusinessQueryService(
      * @param query
      * @return List<FindNearByBusinessDto.Response>
      */
-    @Transactional
     fun findNearByBusinesses(findNearByBusinessesQuery: FindNearbyBusinessesQuery): List<FindNearByBusinessDto.Response> {
         val geoHash = findNearByBusinessesQuery.geoHash
 

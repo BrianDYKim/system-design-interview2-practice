@@ -5,6 +5,8 @@ dependencies {
     implementation(project(":common"))
 
     implementation("org.springframework.boot:spring-boot-starter-batch")
+
+    // JPA
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 
     // Query DSL
@@ -14,6 +16,9 @@ dependencies {
     kapt("jakarta.persistence:jakarta.persistence-api")
 
     runtimeOnly("com.mysql:mysql-connector-j")
+
+    // Redis
+    implementation("org.springframework.boot:spring-boot-starter-data-redis")
 }
 
 // sourceSets["main"].java.srcDir("src/main/generated")

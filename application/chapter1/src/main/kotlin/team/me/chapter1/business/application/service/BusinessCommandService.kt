@@ -12,6 +12,7 @@ import team.me.chapter1.business.application.useCase.BusinessAdministrationUseCa
  * @since 2024. 5. 16.
  */
 @Service
+@Transactional
 class BusinessCommandService(
     private val businessAdministrationUseCase: BusinessAdministrationUseCase,
     private val domainToResponseMapper: BusinessDomainToResponseMapper,
@@ -20,7 +21,6 @@ class BusinessCommandService(
      * @param command 사업장의 등록 요청 커맨드
      * @return RegisterBusinessDto.Response
      */
-    @Transactional
     fun register(command: RegisterBusinessCommand): RegisterBusinessDto.Response {
         val registeredBusiness = businessAdministrationUseCase.register(command)
 
