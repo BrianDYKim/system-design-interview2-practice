@@ -15,6 +15,6 @@ class BusinessSearchUseCaseImpl(
     private val businessRepository: IBusinessRepository,
 ) : BusinessSearchUseCase {
     override fun findNearbyBusinessesFromGeoHash(query: FindNearbyBusinessesQuery): List<IBusiness> {
-        TODO("Not yet implemented")
+        return businessRepository.findBusinessesByGeoHash(query.geoHash)
     }
 }

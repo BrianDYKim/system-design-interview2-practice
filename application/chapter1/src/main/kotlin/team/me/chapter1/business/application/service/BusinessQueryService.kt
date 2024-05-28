@@ -1,5 +1,6 @@
 package team.me.chapter1.business.application.service
 
+import jakarta.transaction.Transactional
 import org.springframework.stereotype.Service
 import team.me.chapter1.business.application.dto.FindNearByBusinessDto
 import team.me.chapter1.business.application.mapper.BusinessDomainToResponseMapper
@@ -20,6 +21,7 @@ class BusinessQueryService(
      * @param query
      * @return List<FindNearByBusinessDto.Response>
      */
+    @Transactional
     fun findNearByBusinesses(findNearByBusinessesQuery: FindNearbyBusinessesQuery): List<FindNearByBusinessDto.Response> {
         val geoHash = findNearByBusinessesQuery.geoHash
 

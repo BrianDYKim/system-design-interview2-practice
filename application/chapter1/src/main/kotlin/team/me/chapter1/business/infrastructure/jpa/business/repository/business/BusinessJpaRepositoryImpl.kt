@@ -3,6 +3,7 @@ package team.me.chapter1.business.infrastructure.jpa.business.repository.busines
 import com.querydsl.jpa.impl.JPAQueryFactory
 import team.me.chapter1.business.infrastructure.jpa.business.entity.BusinessJpaEntity
 import team.me.chapter1.business.infrastructure.jpa.business.entity.QBusinessJpaEntity
+import team.me.chapter1.business.infrastructure.jpa.business.entity.QGeoPartialIndexJpaEntity
 import team.me.common.annotations.hexagonal.PersistenceAdapter
 
 /**
@@ -18,6 +19,17 @@ class BusinessJpaRepositoryImpl(
 
         return queryFactory.selectFrom(qBusinessJpaEntity)
             .where(qBusinessJpaEntity.id.`in`(idList))
+            .fetch()
+    }
+
+    override fun findBusinessesByGeoHash(geoHash: String): List<BusinessJpaEntity> {
+        val qBusinessJpaEntity = QBusinessJpaEntity.businessJpaEntity
+        val qGeoPartialIndexJpaEntity = QGeoPartialIndexJpaEntity.geoPartialIndexJpaEntity
+
+        return queryFactory.select(qBusinessJpaEntity)
+            .from(qGeoPartialIndexJpaEntity)
+            .innerJoin(qBusinessJpaEntity).on(qGeoPartialIndexJpaEntity.businessId.eq(qBusinessJpaEntity.id))
+            .where(qGeoPartialIndexJpaEntity.geoHash.eq(geoHash))
             .fetch()
     }
 }

@@ -46,8 +46,6 @@ class BusinessRepositoryFacade(
 
         val geoHash = GeoHashTool.fromLatitudeAndLongitude(latitude.value, longitude.value, geoHashPrecision)
 
-        logger.info(geoHash)
-
         val geoPartialIndexJpaEntity =
             GeoPartialIndexJpaEntity.generate(
                 geoHash = geoHash,
@@ -60,6 +58,7 @@ class BusinessRepositoryFacade(
     }
 
     override fun findBusinessesByGeoHash(geoHash: String): List<IBusiness> {
-        TODO("Not yet implemented")
+        return businessJpaRepository.findBusinessesByGeoHash(geoHash)
+            .map { jpaEntityToDomainMapper.transform(it) }
     }
 }
