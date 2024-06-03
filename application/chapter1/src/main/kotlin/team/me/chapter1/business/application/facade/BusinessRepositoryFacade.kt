@@ -7,8 +7,8 @@ import team.me.chapter1.business.domain.repository.IBusinessRepository
 import team.me.chapter1.business.infrastructure.jpa.business.entity.BusinessJpaEntity
 import team.me.chapter1.business.infrastructure.jpa.business.entity.GeoPartialIndexJpaEntity
 import team.me.chapter1.business.infrastructure.jpa.business.mapper.BusinessJpaEntityToDomainMapper
-import team.me.chapter1.business.infrastructure.jpa.business.repository.BusinessJpaRepository
-import team.me.chapter1.business.infrastructure.jpa.business.repository.GeoPartialIndexJpaRepository
+import team.me.chapter1.business.infrastructure.jpa.business.repository.business.BusinessJpaRepository
+import team.me.chapter1.business.infrastructure.jpa.business.repository.geoPartial.GeoPartialIndexJpaRepository
 import team.me.common.utils.geoHash.GeoHashTool
 
 /**
@@ -46,8 +46,6 @@ class BusinessRepositoryFacade(
 
         val geoHash = GeoHashTool.fromLatitudeAndLongitude(latitude.value, longitude.value, geoHashPrecision)
 
-        logger.info(geoHash)
-
         val geoPartialIndexJpaEntity =
             GeoPartialIndexJpaEntity.generate(
                 geoHash = geoHash,
@@ -57,5 +55,10 @@ class BusinessRepositoryFacade(
         val storedGeoPartialIndexJpaEntity = geoPartialIndexJpaRepository.save(geoPartialIndexJpaEntity)
 
         return jpaEntityToDomainMapper.transform(storedBusinessJpaEntity)
+    }
+
+    override fun findBusinessesByGeoHash(geoHash: String): List<IBusiness> {
+        return businessJpaRepository.findBusinessesByGeoHash(geoHash)
+            .map { jpaEntityToDomainMapper.transform(it) }
     }
 }

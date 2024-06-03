@@ -14,11 +14,11 @@ import team.me.common.annotations.hexagonal.WebAdapter
  * @since 2024. 5. 16.
  */
 @WebAdapter
-@RequestMapping("/api/v1/admin/businesses")
+@RequestMapping("/api/v1/businesses/admin")
 class BusinessAdminController(private val businessCommandService: BusinessCommandService) {
     private val logger = LoggerFactory.getLogger(this::class.java)
 
-    @PostMapping("")
+    @PostMapping("/registration")
     fun register(
         @RequestBody request: RegisterBusinessDto.Request,
     ): RegisterBusinessDto.Response {
