@@ -1,12 +1,12 @@
 package team.me.chapter2.core.domain.user.entity
 
 class IUser private constructor(
-    private val userId: Long?,
-    private val userName: String,
-    private val userEmail: String,
-    private val userPassword: String,
-    private val userPhoneNumber: String,
-    private val userIsValid: Boolean,
+    val userId: Long?,
+    val userName: String,
+    val userEmail: String,
+    val userPassword: String,
+    val userPhoneNumber: String,
+    val userIsValid: Boolean,
 ) {
     companion object {
         fun generate(

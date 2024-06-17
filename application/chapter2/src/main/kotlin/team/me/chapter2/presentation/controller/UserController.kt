@@ -29,6 +29,6 @@ class UserController(
                 )
             }
 
-        return null
+        return userCommandService.registerUser(registerUserCommand)
     }
 }
