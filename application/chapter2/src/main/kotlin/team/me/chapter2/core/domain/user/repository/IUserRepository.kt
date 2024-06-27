@@ -1,3 +1,7 @@
 package team.me.chapter2.core.domain.user.repository
 
-interface IUserRepository
+import team.me.chapter2.core.domain.user.entity.IUser
+
+interface IUserRepository {
+    fun store(user: IUser): IUser
+}

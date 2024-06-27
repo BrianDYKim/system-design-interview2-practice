@@ -18,7 +18,7 @@ class UserController(
     @PostMapping("/register")
     fun register(
         @RequestBody request: RegisterUserDto.Request,
-    ): RegisterUserDto.Response? {
+    ): RegisterUserDto.Response {
         val registerUserCommand =
             with(request) {
                 RegisterUserCommand(
@@ -29,6 +29,6 @@ class UserController(
                 )
             }
 
-        return null
+        return userCommandService.registerUser(registerUserCommand)
     }
 }
