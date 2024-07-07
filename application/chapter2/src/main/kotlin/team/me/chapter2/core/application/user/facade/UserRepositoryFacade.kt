@@ -32,4 +32,10 @@ class UserRepositoryFacade(
 
         return jpaEntityToDomainMapper.transform(storedUserJpaEntity)
     }
+
+    override fun existsById(id: IUser.Companion.UserId): Boolean {
+        val userId = id.value!!
+
+        return userJpaRepository.existsById(userId)
+    }
 }

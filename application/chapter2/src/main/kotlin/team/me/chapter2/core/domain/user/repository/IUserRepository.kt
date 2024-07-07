@@ -9,4 +9,6 @@ interface IUserRepository {
         password: IUser.Companion.UserPassword,
         phoneNumber: IUser.Companion.UserPhone,
     ): IUser
+
+    fun existsById(id: IUser.Companion.UserId): Boolean
 }

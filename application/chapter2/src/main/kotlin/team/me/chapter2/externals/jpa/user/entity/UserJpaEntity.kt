@@ -55,9 +55,7 @@ open class UserJpaEntity protected constructor() : TimeStampBaseJpaEntity() {
 
         val that = other as UserJpaEntity
 
-        if (id != that.id) return false
-
-        return true
+        return id == that.id
     }
 
     override fun hashCode(): Int = id?.hashCode() ?: 0
