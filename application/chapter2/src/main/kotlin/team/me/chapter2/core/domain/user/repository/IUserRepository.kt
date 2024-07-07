@@ -3,5 +3,10 @@ package team.me.chapter2.core.domain.user.repository
 import team.me.chapter2.core.domain.user.entity.IUser
 
 interface IUserRepository {
-    fun store(user: IUser): IUser
+    fun store(
+        username: IUser.Companion.UserName,
+        email: IUser.Companion.UserEmail,
+        password: IUser.Companion.UserPassword,
+        phoneNumber: IUser.Companion.UserPhone,
+    ): IUser
 }

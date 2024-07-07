@@ -22,10 +22,10 @@ class UserController(
         val registerUserCommand =
             with(request) {
                 RegisterUserCommand(
-                    name = userName,
-                    email = userEmail,
-                    password = userPassword,
-                    phoneNumber = userPhoneNumber,
+                    name = username,
+                    email = email,
+                    password = password,
+                    phoneNumber = phoneNumber,
                 )
             }
 

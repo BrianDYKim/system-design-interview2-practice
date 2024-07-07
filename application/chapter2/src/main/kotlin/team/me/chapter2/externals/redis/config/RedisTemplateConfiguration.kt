@@ -8,13 +8,15 @@ import org.springframework.data.redis.serializer.GenericJackson2JsonRedisSeriali
 import org.springframework.data.redis.serializer.StringRedisSerializer
 
 @Configuration
-class RedisTemplateConfiguration(private val redisConnectionFactory: RedisConnectionFactory) {
+class RedisTemplateConfiguration(
+    private val redisConnectionFactory: RedisConnectionFactory,
+) {
     @Bean
     fun redisTemplate(): RedisTemplate<String, Any> {
         val redisTemplate = RedisTemplate<String, Any>()
 
         return redisTemplate.apply {
-            this.connectionFactory = connectionFactory
+            this.connectionFactory = redisConnectionFactory
             this.keySerializer = StringRedisSerializer()
             this.valueSerializer = GenericJackson2JsonRedisSerializer()
         }

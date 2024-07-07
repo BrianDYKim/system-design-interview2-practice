@@ -1,17 +1,17 @@
 package team.me.chapter2.core.domain.user.entity
 
 class IUser private constructor(
-    private val userId: Long?,
-    private val userName: String,
-    private val userEmail: String,
-    private val userPassword: String,
-    private val userPhoneNumber: String,
-    private val userIsValid: Boolean,
+    val userId: Long?,
+    val username: String?,
+    val userEmail: String?,
+    val userPassword: String?,
+    val userPhoneNumber: String?,
+    val userIsValid: Boolean,
 ) {
     companion object {
         fun generate(
             userId: UserId,
-            userName: UserName,
+            username: UserName,
             userEmail: UserEmail,
             userPassword: UserPassword,
             userPhoneNumber: UserPhone,
@@ -19,7 +19,7 @@ class IUser private constructor(
         ): IUser {
             return IUser(
                 userId = userId.value,
-                userName = userName.value,
+                username = username.value,
                 userEmail = userEmail.value,
                 userPassword = userPassword.value,
                 userPhoneNumber = userPhoneNumber.value,
@@ -27,16 +27,22 @@ class IUser private constructor(
             )
         }
 
-        data class UserId(val value: Long?)
+        @JvmInline
+        value class UserId(val value: Long?)
 
-        data class UserName(val value: String)
+        @JvmInline
+        value class UserName(val value: String?)
 
-        data class UserEmail(val value: String)
+        @JvmInline
+        value class UserEmail(val value: String?)
 
-        data class UserPassword(val value: String)
+        @JvmInline
+        value class UserPassword(val value: String?)
 
-        data class UserPhone(val value: String)
+        @JvmInline
+        value class UserPhone(val value: String?)
 
-        data class UserIsValid(val value: Boolean)
+        @JvmInline
+        value class UserIsValid(val value: Boolean = false)
     }
 }
