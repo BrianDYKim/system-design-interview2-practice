@@ -19,6 +19,10 @@ dependencies {
 
     // Redis
     implementation("org.springframework.boot:spring-boot-starter-data-redis")
+
+    // web socket
+    implementation("org.springframework.boot:spring-boot-starter-websocket")
+    implementation("org.springframework:spring-messaging")
 }
 
 // sourceSets["main"].java.srcDir("src/main/generated")
