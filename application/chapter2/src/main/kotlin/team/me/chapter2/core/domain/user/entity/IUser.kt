@@ -2,11 +2,11 @@ package team.me.chapter2.core.domain.user.entity
 
 class IUser private constructor(
     val userId: Long?,
-    val username: String?,
-    val userEmail: String?,
-    val userPassword: String?,
-    val userPhoneNumber: String?,
-    val userIsValid: Boolean,
+    var username: String?,
+    var userEmail: String?,
+    var userPassword: String?,
+    var userPhoneNumber: String?,
+    var userIsValid: Boolean,
 ) {
     companion object {
         fun generate(
@@ -44,5 +44,12 @@ class IUser private constructor(
 
         @JvmInline
         value class UserIsValid(val value: Boolean = false)
+    }
+
+    // 유저의 휴대폰번호를 갱신한다
+    fun updatePhoneNumber(phoneNumber: UserPhone): IUser {
+        return this.apply {
+            userPhoneNumber = phoneNumber.value
+        }
     }
 }
